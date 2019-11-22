@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [axa]
+    AUTHORIZATION [dbo];
+

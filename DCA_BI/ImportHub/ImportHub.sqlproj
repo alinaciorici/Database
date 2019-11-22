@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>ImportHub</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{2a0d7dd7-389d-4bac-98c1-416ac46077e6}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>ImportHub</RootNamespace>
+    <AssemblyName>ImportHub</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="ContinuousDeployment" />
+    <Folder Include="ContinuousDeployment\StaticTables" />
+    <Folder Include="ContinuousDeployment\StoredProcedures" />
+    <Folder Include="Scripts" />
+    <Folder Include="ContinuousDeployment\Tables" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="veda\" />
+    <Folder Include="veda\Tables\" />
+    <Folder Include="sid\" />
+    <Folder Include="sid\Tables\" />
+    <Folder Include="membership\" />
+    <Folder Include="membership\Tables\" />
+    <Folder Include="dw\" />
+    <Folder Include="dw\Tables\" />
+    <Folder Include="admin_sid\" />
+    <Folder Include="admin_sid\Tables\" />
+    <Folder Include="admin_membership\" />
+    <Folder Include="admin_membership\Tables\" />
+    <Folder Include="admin\" />
+    <Folder Include="admin\Tables\" />
+    <Folder Include="veda\Views\" />
+    <Folder Include="sid\Views\" />
+    <Folder Include="membership\Views\" />
+    <Folder Include="dw\Views\" />
+    <Folder Include="Security\" />
+    <Folder Include="admin\Functions\" />
+    <Folder Include="veda\Stored Procedures\" />
+    <Folder Include="sid\Stored Procedures\" />
+    <Folder Include="membership\Stored Procedures\" />
+    <Folder Include="admin_sid\Stored Procedures\" />
+    <Folder Include="admin_membership\Stored Procedures\" />
+    <Folder Include="admin\Stored Procedures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="ContinuousDeployment\StoredProcedures\sp_generate_merge.sql" />
+    <Build Include="ContinuousDeployment\StoredProcedures\sp_execute_cd_script.sql" />
+    <Build Include="ContinuousDeployment\Tables\__MigrationLog.sql" />
+    <Build Include="dbo\Tables\EmailDomains.sql" />
+    <Build Include="veda\Tables\ProcessingLog.sql" />
+    <Build Include="sid\Tables\Account_Processing_DynamicSync.sql" />
+    <Build Include="sid\Tables\Ref_Account_CappedOrUnlimited.sql" />
+    <Build Include="sid\Tables\Ref_Account_Relationship.sql" />
+    <Build Include="sid\Tables\Ref_Account_AXASalesType.sql" />
+    <Build Include="sid\Tables\Ref_Account_DependentsPaidFor.sql" />
+    <Build Include="sid\Tables\Account.sql" />
+    <Build Include="sid\Tables\Account_Processed.sql" />
+    <Build Include="sid\Tables\Account_Processing_Auto.sql" />
+    <Build Include="sid\Tables\Account_Processing_Manual.sql" />
+    <Build Include="sid\Tables\Account_Staging.sql" />
+    <Build Include="sid\Tables\Ref_Account_ObjectType.sql" />
+    <Build Include="membership\Tables\MembershipList_clean_Lead_Dependant.sql" />
+    <Build Include="membership\Tables\MembershipList_clean_Lead_Primary.sql" />
+    <Build Include="membership\Tables\reporting_Account_Check.sql" />
+    <Build Include="membership\Tables\MembershipList_clean.sql" />
+    <Build Include="membership\Tables\MembershipList.sql" />
+    <Build Include="membership\Tables\MembershipList_full.sql" />
+    <Build Include="dw\Tables\Contact.sql" />
+    <Build Include="dw\Tables\Appointment.sql" />
+    <Build Include="dw\Tables\Lead.sql" />
+    <Build Include="dw\Tables\Account.sql" />
+    <Build Include="dw\Tables\PolicyPatientDetails.sql" />
+    <Build Include="admin_sid\Tables\Load.sql" />
+    <Build Include="admin_membership\Tables\Load.sql" />
+    <Build Include="admin_membership\Tables\ProcessingLog.sql" />
+    <Build Include="admin\Tables\EmailConfig.sql" />
+    <Build Include="admin\Tables\EmailDomains.sql" />
+    <Build Include="veda\Views\vw_Appointment.sql" />
+    <Build Include="veda\Views\vw_VedaAnalyticsExport.sql" />
+    <Build Include="sid\Views\vw_Account_Transformed.sql" />
+    <Build Include="sid\Views\vw_Account_Processing_DynamicSync.sql" />
+    <Build Include="sid\Views\vw_connection.sql" />
+    <Build Include="membership\Views\vw_MembershipList_clean_Lead_Primary.sql" />
+    <Build Include="membership\Views\vw_MembershipList_clean_PolicyHolder.sql" />
+    <Build Include="membership\Views\vw_MembershipList_clean_Dependant.sql" />
+    <Build Include="membership\Views\vw_RelationshipType.sql" />
+    <Build Include="membership\Views\vw_MembershipList_clean.sql" />
+    <Build Include="membership\Views\vw_MembershipList_clean_TotalPersonPerPolicy.sql" />
+    <Build Include="membership\Views\vw_MembershipList_clean_Lead_Dependant.sql" />
+    <Build Include="membership\Views\vw_MembershipList_clean_per_load_Lead.sql" />
+    <Build Include="membership\Views\vw_MembershipList.sql" />
+    <Build Include="membership\Views\vw_reporting_SharedMembershipID_PolicyHolder.sql" />
+    <Build Include="membership\Views\vw_reporting_NoRelationship.sql" />
+    <Build Include="membership\Views\vw_reporting_DuplicateMembershipID_PolicyHolder.sql" />
+    <Build Include="membership\Views\vw_reporting_DuplicateMembershipID_Dependant.sql" />
+    <Build Include="membership\Views\vw_reporting_Account_Check.sql" />
+    <Build Include="dw\Views\vw_Lead.sql" />
+    <Build Include="dw\Views\vw_Contact.sql" />
+    <Build Include="Security\biaccess_RahimAli.sql" />
+    <Build Include="Security\biaccess_LiamAdamcsik.sql" />
+    <Build Include="Security\biaccess_LA.sql" />
+    <Build Include="Security\biaccess_AlinaCiorici.sql" />
+    <Build Include="Security\biaccess.sql" />
+    <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="admin\Functions\fn_StripMultiSpaces.sql" />
+    <Build Include="admin\Functions\fn_ProperCase.sql" />
+    <Build Include="admin\Functions\fn_UpperCase.sql" />
+    <Build Include="admin\Functions\fn_FuzzyMatchString.sql" />
+    <Build Include="veda\Stored Procedures\usp_Appointment.sql" />
+    <Build Include="veda\Stored Procedures\usp_Load.sql" />
+    <Build Include="sid\Stored Procedures\usp_Account_Processing_Manual.sql" />
+    <Build Include="sid\Stored Procedures\usp_Account_Processing.sql" />
+    <Build Include="sid\Stored Procedures\usp_Account_Processed.sql" />
+    <Build Include="sid\Stored Procedures\usp_Account_Staging.sql" />
+    <Build Include="sid\Stored Procedures\usp_Account_Processing_DynamicSync.sql" />
+    <Build Include="sid\Stored Procedures\usp_Account_Processing_Auto.sql" />
+    <Build Include="sid\Stored Procedures\usp_Account_Reset.sql" />
+    <Build Include="membership\Stored Procedures\usp_MembershipList_clean_Lead_Dependant.sql" />
+    <Build Include="membership\Stored Procedures\usp_MembershipList_clean_Lead_Primary.sql" />
+    <Build Include="membership\Stored Procedures\usp_MembershipList_clean.sql" />
+    <Build Include="membership\Stored Procedures\usp_membership_Reset.sql" />
+    <Build Include="membership\Stored Procedures\usp_reporting_Account_Check.sql" />
+    <Build Include="membership\Stored Procedures\usp_PostUpdate.sql" />
+    <Build Include="admin_sid\Stored Procedures\usp_Load.sql" />
+    <Build Include="admin_membership\Stored Procedures\usp_Load.sql" />
+    <Build Include="admin\Stored Procedures\usp_Duplicate_FileName_Check.sql" />
+    <Build Include="Security\vedaimport.sql" />
+    <Build Include="Security\veda.sql" />
+    <Build Include="Security\staging.sql" />
+    <Build Include="Security\sid.sql" />
+    <Build Include="Security\reporting.sql" />
+    <Build Include="Security\membership.sql" />
+    <Build Include="Security\Eligibility.sql" />
+    <Build Include="Security\dynamics.sql" />
+    <Build Include="Security\dw.sql" />
+    <Build Include="Security\dev.sql" />
+    <Build Include="Security\axa.sql" />
+    <Build Include="Security\audit.sql" />
+    <Build Include="Security\admin_sid.sql" />
+    <Build Include="Security\admin_membership.sql" />
+    <Build Include="Security\admin.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PreDeploy Include="Scripts\Script.PreDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ContinuousDeployment\1.PreDeployment.Updates.sql" />
+    <None Include="ContinuousDeployment\3.PostDeployment.Updates.sql" />
+    <None Include="ContinuousDeployment\2.PostDeployment.StaticTablesList.sql" />
+    <None Include="ContinuousDeployment\StaticTables\StaticTableExample.sql" />
+  </ItemGroup>
+</Project>
